@@ -22,7 +22,7 @@ public class Car {
   private String model;
   private String version;
   private int numberOfDoors;
-  private String co2Emission;
+  private int co2Emission;
   private Long grossPrice;
   private Long netPrice;
 

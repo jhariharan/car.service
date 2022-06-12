@@ -35,7 +35,7 @@ public class CarController {
   }
 
   @GetMapping("/{id}")
-  public Car getCarById(@PathVariable @Validated Long carId) {
+  public Car getCarById(@PathVariable("id") @Validated Long carId) {
     log.info("Inside getCarById method of CarController");
     return carService.findByCarId(carId);
   }
