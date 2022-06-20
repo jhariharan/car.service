@@ -2,6 +2,9 @@ package com.carlease.car.service.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,21 +26,38 @@ public class CarController {
   @Autowired
   private CarService carService;
 
+  /**
+   * GET end point which gets list of all cars
+   *
+   * @return List
+   */
+
   @GetMapping("/")
   public List<Car> getAllCars() {
     return carService.findAllCars();
   }
 
+  /**
+   * POST end point which adds a new car
+   *
+   * @return car
+   */
+
   @PostMapping("/")
-  public Car saveCar(@RequestBody Car car) {
+  public Car saveCar(@Valid @NotNull @RequestBody Car car) {
     log.info("Inside saveCar method of CarController");
     return carService.saveCar(car);
   }
+
+  /**
+   * GET end point which gets a car based on a car id
+   *
+   * @return car
+   */
 
   @GetMapping("/{id}")
   public Car getCarById(@PathVariable("id") @Validated Long carId) {
     log.info("Inside getCarById method of CarController");
     return carService.findByCarId(carId);
   }
-
 }
