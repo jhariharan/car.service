@@ -25,5 +25,7 @@ public class Car {
   private int co2Emission;
   private Long grossPrice;
   private Long netPrice;
+  private Long mileage;
+  private Long duration;
 
 }
